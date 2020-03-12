@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z $1 ];
+then
+  remote_ip='127.0.0.1'
+else
+  remote_ip=$1
+fi
+mn --topo tree,3 --mac --controller=remote,ip=$remote_ip,port=6653 --switch ovs,protocols=OpenFlow13 --nat

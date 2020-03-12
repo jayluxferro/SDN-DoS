@@ -1,0 +1,36 @@
+#!/usr/bin/python
+
+import logger as log
+import sqlite3
+import func 
+
+def init():
+    conn = sqlite3.connect('test.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def setSubnet(ip, mac):
+    db = init()
+    cursor = db.cursor()
+    cursor.execute("update subnet set ip=?, mac=?", (ip,mac))
+    db.commit()
+    log.success('Updated subnet')
+
+def getSubnet():
+    db = init()
+    cursor = db.cursor()
+    cursor.execute("select * from subnet limit 1")
+    return cursor.fetchone()
+
+def addData(data):
+    db = init()
+    cursor = db.cursor()
+    cursor.execute("insert into data(source_ip, destination_ip, protocol, switch_mac, p1, p2, p3, p4, p1_rx_packets, p1_tx_packets, p1_rx_bytes, p1_tx_bytes, p2_rx_packets, p2_tx_packets, p2_rx_bytes, p2_tx_bytes, p3_rx_packets, p3_tx_packets, p3_rx_bytes, p3_tx_bytes, p4_rx_packets, p4_tx_packets, p4_rx_bytes, p4_tx_bytes, label) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", tuple(data))
+    db.commit()
+    log.success('[+] Added new data')
+
+def fetchTable(tableName):
+    db = init()
+    cursor = db.cursor()
+    cursor.execute('select * from {}'.format(tableName))
+    return cursor.fetchall()
