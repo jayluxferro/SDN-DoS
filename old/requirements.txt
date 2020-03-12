@@ -1,6 +1,0 @@
-scapy
-python-socketio[client]
-eventlet
-psutil
-sklearn
-pandas

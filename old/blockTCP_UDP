@@ -1,2 +1,0 @@
-#!/bin/bash
-iptables -A INPUT -p "$1" --destination-port "$2" -j DROP
