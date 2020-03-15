@@ -11,6 +11,20 @@ host_ip = '127.0.0.1'
 host_port = 5000
 host_iface = 'nat0-eth0'
 api = 'http://localhost:8080'
+ip_prefix = '10.0.0.'
+switch_prefix = '00:00:00:00:00:00:00:0'
+protocol_list = ['icmp', 'tcp', 'udp']
+header=['Source IP', 'Destination IP', 'Protocol', 'Switch', 'P1', 'P2', 'P3', 'P4', 'P1 Rx Packet', 'P1 Tx Packet', 'P1 Rx Bytes', 'P1 Tx Bytes', 'P2 Rx Packet', 'P2 Tx Packet', 'P2 Rx Bytes', 'P2 Tx Bytes', 'P3 Rx Packet', 'P3 Tx Packet', 'P3 Rx Bytes', 'P3 Tx Bytes', 'P4 Rx Packet', 'P4 Tx Packet', 'P4 Rx Bytes', 'P4 Tx Bytes', 'Label']
+
+
+def formatProtocol(protocol):
+    return protocol_list.index(protocol)
+
+def formatIP(ip):
+    return int(ip.split(ip_prefix)[-1])
+
+def formatSwitch(switch):
+    return int(switch.split(switch_prefix)[-1])
 
 def inSubnet(ip):
     subnet = db.getSubnet()['ip'].encode('utf-8')
