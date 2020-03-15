@@ -2,7 +2,7 @@ scapy
 python-socketio[client]
 eventlet
 psutil
-tensorflow==1.9
+tensorflow==1.15.2
 keras==2.2.2
 gensim==3.5
 numpy==1.13.3
