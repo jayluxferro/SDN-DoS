@@ -1,1 +1,1 @@
-iperf -u -c 10.0.0.9
+while true; do iperf -u -c 10.0.0.9; done

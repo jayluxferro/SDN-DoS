@@ -3,6 +3,7 @@ Train Model
 """
 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
 import pandas as pd
 import numpy as np
 import func as fx
@@ -12,6 +13,9 @@ import sys
 import pprint
 import logger as lg
 import math
+import matplotlib.pyplot as plt
+from keras.utils.vis_utils import plot_model
+import pickle
 
 # data source
 data_file = 'data.csv'
@@ -32,25 +36,29 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 sys.exit()
 """
 
-
+"""
 # testing knn classifier
 from sklearn.neighbors import KNeighborsClassifier
 model = KNeighborsClassifier(n_neighbors=1)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 lg.success('KNN: {:.2f}'.format(model.score(X_test, y_test)))
+cm = confusion_matrix(y_test, y_pred)
+fx.plot_cm(cm, title='KNN Confusion Matrix')
 
 # testing logistic regression
 from sklearn.linear_model import LogisticRegression
 model = LogisticRegression()
 model.fit(X_train, y_train)
 lg.success('Logistic Regression: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Logistic Regression Confusion Matrix')
 
 # testing linear svc
 from sklearn.svm import LinearSVC
 model = LinearSVC()
 model.fit(X_train, y_train)
 lg.success('LinearSVC: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='LinearSVC Confusion Matrix')
 
 
 # testing svc
@@ -58,6 +66,7 @@ from sklearn.svm import SVC
 model = SVC()
 model.fit(X_train, y_train)
 lg.success('SVC: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='SVC Confusion Matrix')
 
 
 # testing decision tree
@@ -65,18 +74,21 @@ from sklearn.tree import DecisionTreeClassifier
 model = DecisionTreeClassifier(random_state=0, max_depth=7)
 model.fit(X_train, y_train)
 lg.success('Decision Tree: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Decision Tree Confusion Matrix')
 
 # testing random forest
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(n_estimators=100, random_state=0)
 model.fit(X_train, y_train)
 lg.success('Random Forest: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Random Forest Confusion Matrix')
 
 # testing gradientboosting classifier
 from sklearn.ensemble import GradientBoostingClassifier
 model = GradientBoostingClassifier(random_state=0)
 model.fit(X_train, y_train)
 lg.success('Gradient Boosting: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Gradient Boosting Confusion Matrix')
 
 
 # testing naive bayesian classifiers
@@ -84,16 +96,20 @@ from sklearn.naive_bayes import *
 model = GaussianNB()
 model.fit(X_train, y_train)
 lg.success('Gaussian NB: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Gaussian NB Confusion Matrix')
 
 model = BernoulliNB()
 model.fit(X_train, y_train)
 lg.success('Bernoulli NB: {:.2f}'.format(model.score(X_test, y_test)))
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Bernoulli NB Confusion Matrix')
 
 model = MultinomialNB()
 model.fit(X_train, y_train)
 lg.success('Multinomial NB: {:.2f}'.format(model.score(X_test, y_test)))
-
+fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Multinomial NB Confusion Matrix')
+"""
 #sys.exit(1)
+
 # neural network
 batch_size=64
 epochs = 100
@@ -121,11 +137,24 @@ X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
 X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
 
 model = rmd.lstm(input_data_shape, num_features)
+plot_model(model, to_file='./rnn_lstm.eps')
+plot_model(model, to_file='./rnn_lstm.png')
+#model.summary(print_fn=fx.rnnprint)
 model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs)
 res = model.evaluate(X_test, y_test)
 lg.success('LSTM Accuracy: {:.2f}'.format(res[3]))
+y_pred = np.around(model.predict(X_test))
+y_pred = np.array([[int(i)] for i in y_pred])
+#print(y_test, y_pred)
+#fx.plot_cm(confusion_matrix(y_test, y_pred), title='LSTM Confusion Matrix')
 #print('Test Loss: {:2f}'.format(res[2]))
+#sys.exit()
 
+# save model
+model.save('model.h5')
+lg.success('[+] Model saved')
+
+"""
 # convolutional neural network
 lg.warning('\n\nCNN')
 X_train = X_train_1
@@ -136,7 +165,14 @@ print(y_train, len(y_train))
 
 print(X_train.shape)
 model = cmd.default(X_train.shape[1:])
+#model.summary(print_fn=fx.cnnprint)
 model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
+plot_model(model, to_file='./cnn.eps')
+plot_model(model, to_file='./cnn.png')
 res = model.evaluate(X_test, y_test)
 lg.success('CNN Accuracy: {:.2f}'.format(res[1]))
-
+y_pred = np.around(model.predict(X_test))
+y_pred = np.array([[int(i)] for i in y_pred])
+#print(y_test, y_pred)
+fx.plot_cm(confusion_matrix(y_test, y_pred), title='CNN Confusion Matrix')
+"""

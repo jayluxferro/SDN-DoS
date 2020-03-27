@@ -34,3 +34,10 @@ def fetchTable(tableName):
     cursor = db.cursor()
     cursor.execute('select * from {}'.format(tableName))
     return cursor.fetchall()
+
+def addDD(table, data):
+    db = init()
+    cursor = db.cursor()
+    cursor.execute("insert into "+ table + "(protocol, time) values(?, ?)", tuple(data))
+    db.commit()
+    log.success('[+] {} data added'.format(table))
