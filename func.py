@@ -10,6 +10,8 @@ from pandas import DataFrame as DF
 import cm_pretty as cm_p
 import numpy as np
 import detection as dtn
+import logger as lg
+import pickle
 
 host_ip = '127.0.0.1'
 host_port = 5000
@@ -19,6 +21,21 @@ ip_prefix = '10.0.0.'
 switch_prefix = '00:00:00:00:00:00:00:0'
 protocol_list = ['icmp', 'tcp', 'udp']
 header=['Source IP', 'Destination IP', 'Protocol', 'Switch', 'P1', 'P2', 'P3', 'P4', 'P1 Rx Packet', 'P1 Tx Packet', 'P1 Rx Bytes', 'P1 Tx Bytes', 'P2 Rx Packet', 'P2 Tx Packet', 'P2 Rx Bytes', 'P2 Tx Bytes', 'P3 Rx Packet', 'P3 Tx Packet', 'P3 Rx Bytes', 'P3 Tx Bytes', 'P4 Rx Packet', 'P4 Tx Packet', 'P4 Rx Bytes', 'P4 Tx Bytes', 'Label']
+
+def generatePoints(length):
+    return np.linspace(1, length, length)
+
+def saveLinearModel(prefix, model):
+    file_name = prefix + '.pkl'
+    with open(file_name, 'wb') as file:
+        pickle.dump(model, file)
+        lg.success('[+] Model save: ==> {}\n'.format(prefix))
+
+def loadLinearModel(prefix):
+    model = prefix + '.pkl'
+    with open(model, 'rb') as file:
+        return pickle.load(file)
+    return None
 
 def rnnprint(s):
     with open('rnn_modelsummary.txt','w+') as f:

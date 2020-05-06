@@ -16,6 +16,12 @@ def setSubnet(ip, mac):
     db.commit()
     log.success('Updated subnet')
 
+def query(sql):
+    db = init()
+    cursor = db.cursor()
+    cursor.execute(sql)
+    return cursor.fetchall()
+
 def getSubnet():
     db = init()
     cursor = db.cursor()
@@ -38,6 +44,6 @@ def fetchTable(tableName):
 def addDD(table, data):
     db = init()
     cursor = db.cursor()
-    cursor.execute("insert into "+ table + "(protocol, time) values(?, ?)", tuple(data))
+    cursor.execute("insert into "+ table + "(protocol, time, model) values(?, ?, ?)", tuple(data))
     db.commit()
     log.success('[+] {} data added'.format(table))

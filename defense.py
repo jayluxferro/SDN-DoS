@@ -5,7 +5,7 @@ import db
 import time
 from scapy.all import *
 
-def filter(pkt, proto, timeSeen):
+def filter(pkt, proto, timeSeen, model_name):
     pprint.pprint(pkt)
     d.error('[+] Defending: {}'.format(proto))
 
@@ -25,7 +25,7 @@ def filter(pkt, proto, timeSeen):
         #subprocess.check_call(['iptables', '-A', 'INPUT', '-p', proto, 'dport', stack.dport, '-j', 'DROP'])
         subprocess.check_call(['./blockTCP_UDP', str(proto), str(stack.dport)])
     # log data
-    db.addDD('defense', proto, time.time() - timeSeen)
+    db.addDD('detection', (proto, time.time() - timeSeen, model_name)) # i swapped db table name
 
 def reset():
     d.default('[+] Resetting ')

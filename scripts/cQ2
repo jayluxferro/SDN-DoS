@@ -1,0 +1,5 @@
+ovs-vsctl set port s1-eth1 qos=@newqos -- --id=@newqos create qos \
+ type=linux-htb other-config:max-rate=10000000 queues:1=@q1 queues:2=@q2 \
+ -- --id=@q1 create queue other-config:min-rate=10000000 \
+ other-config:max-rate=10000000 -- --id=@q2 create queue \
+ other-config:min-rate=5000000 other-config:max-rate=5000000

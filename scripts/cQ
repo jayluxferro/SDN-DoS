@@ -1,0 +1,1 @@
+set port s1-eth1 qos=@newqos --   --id=@newqos create qos type=linux-htb       other-config:max-rate=5000000       queues:123=@vif10queue       queues:234=@vif20queue --   --id=@vif10queue create queue other-config:max-rate=5000000 other-config:min-rate=5000000 --   --id=@vif20queue create queue other-config:min-rate=3000000 other-config:max-rate=3000000
