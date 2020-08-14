@@ -16,6 +16,7 @@ import math
 import matplotlib.pyplot as plt
 from keras.utils.vis_utils import plot_model
 import pickle
+import os
 
 # data source
 data_file = 'data.csv'
@@ -28,13 +29,6 @@ target = df.iloc[:,[len(fx.header) - 1]].values
 
 X_train, X_test, y_train, y_test = train_test_split(features, target, random_state=0, test_size=0.2)
 print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
-"""
-y_train = y_train.reshape(1, y_train.shape[0])
-y_test = y_test.reshape(1, y_test.shape[0])
-
-print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
-sys.exit()
-"""
 
 # testing knn classifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -115,7 +109,6 @@ fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Multinomial N
 fx.saveLinearModel('mnb', model)
 
 #sys.exit(1)
-"""
 # neural network
 batch_size=64
 epochs = 100
@@ -129,9 +122,11 @@ div = int(math.sqrt(shap3))
 
 X_train_1 = np.resize(X_train, (X_train.shape[1] * 10 , X_train.shape[1] * 10))
 X_test_1 = np.resize(X_test, (X_test.shape[1] * 10, X_test.shape[1] * 10 ))
+print(X_train_1.shape, X_test_1.shape, div)
 
-X_train_1 = np.reshape(X_train_1, (shap3, X_train_1.shape[1]/div, X_train_1.shape[1]/div, 1))
-X_test_1 = np.reshape(X_test_1, (shap3, X_test_1.shape[1]/div, X_test_1.shape[1]/div, 1))
+
+X_train_1 = np.reshape(X_train_1, (shap3, int(X_train_1.shape[1]/div), int(X_train_1.shape[1]/div), 1))
+X_test_1 = np.reshape(X_test_1, (shap3, int(X_test_1.shape[1]/div), int(X_test_1.shape[1]/div), 1))
 print(X_train_1.shape)
 y_train_1 = np.resize(y_train, (y_train.shape[1] * div, y_train.shape[1] * div))
 y_train_1 = np.reshape(y_train_1, (shap3,))
@@ -143,7 +138,10 @@ X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
 X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
 
 model = rmd.lstm(input_data_shape, num_features)
-plot_model(model, to_file='./rnn_lstm.eps')
+try:
+    plot_model(model, to_file='./rnn_lstm.eps')
+except:
+    pass
 plot_model(model, to_file='./rnn_lstm.png')
 #model.summary(print_fn=fx.rnnprint)
 model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs)
@@ -157,7 +155,7 @@ y_pred = np.array([[int(i)] for i in y_pred])
 #sys.exit()
 
 # save model
-model.save('model.h5')
+model.save('lstm_model.h5')
 lg.success('[+] Model saved')
 
 # convolutional neural network
@@ -170,14 +168,19 @@ print(y_train, len(y_train))
 
 print(X_train.shape)
 model = cmd.default(X_train.shape[1:])
-#model.summary(print_fn=fx.cnnprint)
-model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
-plot_model(model, to_file='./cnn.eps')
+try:
+    plot_model(model, to_file='./cnn.eps')
+except:
+    pass
 plot_model(model, to_file='./cnn.png')
+#model.summary(print_fn=fx.cnnprint)
+
+model.fit(X_train, y_train, epochs=epochs, batch_size=batch_size)
 res = model.evaluate(X_test, y_test)
 lg.success('CNN Accuracy: {:.2f}'.format(res[1]))
 y_pred = np.around(model.predict(X_test))
 y_pred = np.array([[int(i)] for i in y_pred])
 #print(y_test, y_pred)
 fx.plot_cm(confusion_matrix(y_test, y_pred), title='CNN Confusion Matrix')
-"""
+model.save('lstm_model.h5')
+lg.success('[+] Model saved')
