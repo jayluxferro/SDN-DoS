@@ -19,15 +19,21 @@ import pickle
 import os
 
 # data source
-data_file = 'data.csv'
+#data_file = 'data.csv'
+data_file = 'data/ICMP_P2_Rx_Packet.csv'
 df = pd.read_csv(data_file, delimiter=',')
+#print(df.head())
 features_columns = []
 for x in range(len(fx.header) - 1):
     features_columns.append(x)
 features = df.iloc[:, features_columns].values
 target = df.iloc[:,[len(fx.header) - 1]].values
 
-X_train, X_test, y_train, y_test = train_test_split(features, target, random_state=0, test_size=0.2)
+X_train_default, X_test_default, y_train_default, y_test_default = train_test_split(features, target, random_state=0, test_size=0.2)
+X_train = X_train_default
+X_test = X_test_default
+y_train = y_train_default
+y_test = y_test_default
 print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
 # testing knn classifier
@@ -107,7 +113,7 @@ model.fit(X_train, y_train)
 lg.success('Multinomial NB: {:.2f}'.format(model.score(X_test, y_test)))
 fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Multinomial NB Confusion Matrix')
 fx.saveLinearModel('mnb', model)
-
+"""
 #sys.exit(1)
 # neural network
 batch_size=64
@@ -116,26 +122,9 @@ num_features = y_train.shape[1]
 input_data_shape = X_train.shape[1]
 lg.warning('\n\nNeural Network')
 lg.success("Num features: {}".format(num_features))
-
-shap3 = 100
-div = int(math.sqrt(shap3))
-
-X_train_1 = np.resize(X_train, (X_train.shape[1] * 10 , X_train.shape[1] * 10))
-X_test_1 = np.resize(X_test, (X_test.shape[1] * 10, X_test.shape[1] * 10 ))
-print(X_train_1.shape, X_test_1.shape, div)
-
-
-X_train_1 = np.reshape(X_train_1, (shap3, int(X_train_1.shape[1]/div), int(X_train_1.shape[1]/div), 1))
-X_test_1 = np.reshape(X_test_1, (shap3, int(X_test_1.shape[1]/div), int(X_test_1.shape[1]/div), 1))
-print(X_train_1.shape)
-y_train_1 = np.resize(y_train, (y_train.shape[1] * div, y_train.shape[1] * div))
-y_train_1 = np.reshape(y_train_1, (shap3,))
-
-y_test_1 = np.resize(y_test, (y_test.shape[1] * div, y_test.shape[1] * div))
-y_test_1 = np.reshape(y_test_1, (shap3,))
-
-X_train = np.reshape(X_train, (X_train.shape[0], 1, X_train.shape[1]))
-X_test = np.reshape(X_test, (X_test.shape[0], 1, X_test.shape[1]))
+"""
+X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
+X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
 
 model = rmd.lstm(input_data_shape, num_features)
 try:
@@ -150,23 +139,21 @@ lg.success('LSTM Accuracy: {:.2f}'.format(res[3]))
 y_pred = np.around(model.predict(X_test))
 y_pred = np.array([[int(i)] for i in y_pred])
 #print(y_test, y_pred)
-#fx.plot_cm(confusion_matrix(y_test, y_pred), title='LSTM Confusion Matrix')
+fx.plot_cm(confusion_matrix(y_test, y_pred), title='LSTM Confusion Matrix')
 #print('Test Loss: {:2f}'.format(res[2]))
 #sys.exit()
-
 # save model
 model.save('lstm_model.h5')
 lg.success('[+] Model saved')
 
 # convolutional neural network
 lg.warning('\n\nCNN')
-X_train = X_train_1
-X_test = X_test_1
-y_train = y_train_1
-y_test = y_test_1
-print(y_train, len(y_train))
+X_train = np.reshape(X_train_default, (X_train_default.shape[0], X_train_default.shape[1], 1, 1))
+y_train = np.reshape(y_train_default, (y_train_default.shape[0], y_train_default.shape[1], 1, 1))
 
-print(X_train.shape)
+X_test = np.reshape(X_test_default, (X_test_default.shape[0], X_test_default.shape[1], 1, 1))
+y_test = np.reshape(y_test_default, (y_test_default.shape[0], y_test_default.shape[1], 1, 1))
+print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
 model = cmd.default(X_train.shape[1:])
 try:
     plot_model(model, to_file='./cnn.eps')
@@ -181,6 +168,6 @@ lg.success('CNN Accuracy: {:.2f}'.format(res[1]))
 y_pred = np.around(model.predict(X_test))
 y_pred = np.array([[int(i)] for i in y_pred])
 #print(y_test, y_pred)
-fx.plot_cm(confusion_matrix(y_test, y_pred), title='CNN Confusion Matrix')
+fx.plot_cm(confusion_matrix(y_test_default, y_pred), title='CNN Confusion Matrix')
 model.save('lstm_model.h5')
 lg.success('[+] Model saved')
