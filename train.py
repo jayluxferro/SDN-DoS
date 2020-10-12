@@ -193,7 +193,7 @@ def runScenario(data_file, test_size):
 
 
 # running a set of scenarios
-data_source = ['data', 'data2']
+data_source = ['data']
 splits = [0.2, 0.3, 0.4]
 iterations = 20
 for _ in range(iterations):
