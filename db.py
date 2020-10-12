@@ -3,6 +3,7 @@
 import logger as log
 import sqlite3
 import func 
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
 def init():
     conn = sqlite3.connect('test.db')
@@ -47,3 +48,14 @@ def addDD(table, data):
     cursor.execute("insert into "+ table + "(protocol, time, model) values(?, ?, ?)", tuple(data))
     db.commit()
     log.success('[+] {} data added'.format(table))
+
+def addAllData(data, tsize, y_test, y_pred, model):
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    db = init()
+    cursor = db.cursor()
+    cursor.execute("insert into all_data(data, tsize, precision, recall, accuracy, f1, model) values(?, ?, ?, ?, ?, ?, ?)", (data, tsize, precision, recall, accuracy, f1, model))
+    db.commit()
+    log.success('[+] {} <=> {} <=> {}'.format(data, tsize, model))
