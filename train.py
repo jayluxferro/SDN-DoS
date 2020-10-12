@@ -200,4 +200,3 @@ for _ in range(iterations):
     for data in data_source:
         for split in splits:
             runScenario(data, split)
-            break
