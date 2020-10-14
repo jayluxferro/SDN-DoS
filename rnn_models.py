@@ -1,6 +1,7 @@
 from keras.layers import Embedding, LSTM, Dense, Dropout, Lambda, Flatten, GRU, Activation, SimpleRNN
 from keras.models import Sequential, load_model, model_from_config
 import keras.backend as K
+import keras.metrics as KM
 
 def simpleRNN(input_data_shape, num_features):
     model = Sequential()

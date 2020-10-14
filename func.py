@@ -12,6 +12,9 @@ import numpy as np
 import detection as dtn
 import logger as lg
 import pickle
+from sklearn.metrics import plot_precision_recall_curve, precision_recall_curve
+import matplotlib.pyplot as plt
+import numpy as np
 
 host_ip = '127.0.0.1'
 host_port = 5000
@@ -189,3 +192,19 @@ def getDetectionData(pkt, source_ip, destination_ip, protocol, label, t_start):
 
             # forward data to detection engine
             dtn.process(pkt, np.array([data]), label, protocol, t_start)
+
+
+def plotSinglePS(classifier, X_test, y_test):
+    disp = plot_precision_recall_curve(classifier, X_test, y_test)
+    disp.ax_.set_title('2-class Precision-Recall curve: AP={0:0.2f}'.format(disp.average_precision))
+    plt.show()
+
+def plotNPS(model, y_test, y_pred):
+    precision, recall, thresholds = precision_recall_curve(y_test, y_pred)
+    #print(precision, recall, thresholds)
+    plt.figure()
+    plt.step(precision, recall)
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.title('Precision-Recall curve: Model={0} AP={1:0.2f}'.format(model, np.average(precision)))
+    plt.show()
