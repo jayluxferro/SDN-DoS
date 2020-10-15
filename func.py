@@ -209,7 +209,7 @@ def plotNPS(model, y_test, y_pred, test_size):
     plt.ylabel('Precision')
     plt.ylim([0.0, 1.05])
     plt.xlim([0.0, 1.0])
-    plt.legend(['Model={0} AP={1:0.2f} T={2:0.2f}'.format(model, np.average(precision), test_size))
+    plt.legend(['Model={0} AP={1:0.2f} T={2:0.2f}'.format(model, np.average(precision), test_size)])
     #plt.title('Precision-Recall curve: Model={0} AP={1:0.2f}'.format(model, np.average(precision)))
     #plt.show()
     plt.savefig('{}_T_{}.eps'.format(model, test_size))
