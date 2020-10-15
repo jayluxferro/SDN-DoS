@@ -18,6 +18,7 @@ import numpy as np
 
 host_ip = '127.0.0.1'
 host_port = 5000
+results_path='results/'
 host_iface = 'nat0-eth0'
 api = 'http://localhost:8080'
 ip_prefix = '10.0.0.'
@@ -29,23 +30,23 @@ def generatePoints(length):
     return np.linspace(1, length, length)
 
 def saveLinearModel(prefix, model):
-    file_name = prefix + '.pkl'
+    file_name = results_path + prefix + '.pkl'
     with open(file_name, 'wb') as file:
         pickle.dump(model, file)
         lg.success('[+] Model save: ==> {}\n'.format(prefix))
 
 def loadLinearModel(prefix):
-    model = prefix + '.pkl'
+    model = results_path + prefix + '.pkl'
     with open(model, 'rb') as file:
         return pickle.load(file)
     return None
 
 def rnnprint(s):
-    with open('rnn_modelsummary.txt','w+') as f:
+    with open(results_path + 'rnn_modelsummary.txt','w+') as f:
         print(s, f)
 
 def cnnprint(s):
-    with open('cnn_modelsummary.txt','w+') as f:
+    with open(results_path + 'cnn_modelsummary.txt','w+') as f:
         print(s, f)
 
 def plot_cm(cm, title='Confusion Matrix'):
@@ -198,18 +199,31 @@ def plotSinglePS(classifier, X_test, y_test, test_size):
     disp = plot_precision_recall_curve(classifier, X_test, y_test)
     #disp.ax_.set_title('Precision-Recall curve: AP={0:0.2f} T={1:0.2f}'.format(disp.average_precision, test_size))
     #plt.show()
-    plt.savefig('{}_T_{}.eps'.format(disp.estimator_name, test_size))
+    plt.savefig(results_path + '{}_T_{}.eps'.format(disp.estimator_name, test_size))
 
 def plotNPS(model, y_test, y_pred, test_size):
     precision, recall, thresholds = precision_recall_curve(y_test, y_pred)
     #print(precision, recall, thresholds)
     plt.figure()
-    plt.step(precision, recall)
+    plt.step(recall, precision)
     plt.xlabel('Recall')
     plt.ylabel('Precision')
     plt.ylim([0.0, 1.05])
     plt.xlim([0.0, 1.0])
-    plt.legend(['Model={0} AP={1:0.2f} T={2:0.2f}'.format(model, np.average(precision), test_size)])
+    avgPrecision = np.average(precision)
+    legend = 'Model={0} AP={1:0.2f} T={2:0.2f}'.format(model, np.average(precision), test_size)
+    plt.legend([legend])
     #plt.title('Precision-Recall curve: Model={0} AP={1:0.2f}'.format(model, np.average(precision)))
     #plt.show()
-    plt.savefig('{}_T_{}.eps'.format(model, test_size))
+    plt.savefig(results_path + '{}_T_{}.eps'.format(model, test_size))
+    return precision, recall, legend
+
+
+def plotSummary(precisionList, recallList, legends, test_size):
+    plt.figure()
+    counter = 0
+    for p in precisionList:
+        plt.step(recallList[counter], precisionList[counter], label=legends[counter])
+        counter += 1
+    plt.legend(legends)
+    plt.savefig(results_path + 'pr_summary_{}.eps'.format(test_size))
