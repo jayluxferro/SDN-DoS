@@ -48,11 +48,11 @@ def runScenario(data_file, test_size):
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     lg.success('KNN: {:.4f}'.format(model.score(X_test, y_test)))
-    cm = confusion_matrix(y_test, y_pred)
+    #cm = confusion_matrix(y_test, y_pred)
 #fx.plot_cm(cm, title='KNN Confusion Matrix')
     fx.saveLinearModel('knn', model)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'knn')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
     # testing logistic regression
     model = LogisticRegression()
@@ -62,7 +62,7 @@ def runScenario(data_file, test_size):
 #fx.plot_cm(confusion_matrix(y_test, model.predict(X_test)), title='Logistic Regression Confusion Matrix')
     fx.saveLinearModel('lr', model)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'lr')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
     # testing linear svc
     model = LinearSVC()
@@ -72,7 +72,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('lsvc', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'lsvc')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
 # testing svc
     model = SVC()
@@ -82,7 +82,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('svc', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'svc')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
 # testing decision tree
     model = DecisionTreeClassifier(random_state=0, max_depth=7)
@@ -92,7 +92,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('dt', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'dt')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
 # testing random forest
     model = RandomForestClassifier(n_estimators=100, random_state=0)
@@ -102,7 +102,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('rf', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'rf')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
 # testing gradientboosting classifier
     model = GradientBoostingClassifier(random_state=0)
@@ -112,7 +112,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('gb', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'gb')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
 # testing naive bayesian classifiers
     model = GaussianNB()
@@ -122,7 +122,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('gnb', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'gnb')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
     model = BernoulliNB()
     model.fit(X_train, y_train)
@@ -131,7 +131,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('bnb', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'bnb')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
     model = MultinomialNB()
     model.fit(X_train, y_train)
@@ -140,7 +140,7 @@ def runScenario(data_file, test_size):
     fx.saveLinearModel('mnb', model)
     y_pred = model.predict(X_test)
     #db.addAllData(data_file, test_size, y_test, y_pred, 'mnb')
-    fx.plotSinglePS(model, X_test, y_test)
+    fx.plotSinglePS(model, X_test, y_test, test_size)
 
     # neural network
     input_data_shape = X_train.shape[1]
@@ -173,7 +173,7 @@ def runScenario(data_file, test_size):
     model.save('lstm_model.h5')
     lg.success('[+] Model saved')
     #db.addAllData(data_file, test_size, y_test, y_pred, 'lstm')
-    fx.plotNPS('LSTM', y_test, y_pred)
+    fx.plotNPS('LSTM', y_test, y_pred, test_size)
     
     # convolutional neural network
     lg.warning('\n\nCNN')
@@ -201,12 +201,12 @@ def runScenario(data_file, test_size):
     model.save('lstm_model.h5')
     lg.success('[+] Model saved')
     #db.addAllData(data_file, test_size, y_test_default, y_pred, 'cnn')
-    fx.plotNPS('CNN', y_test_default, y_pred)
+    fx.plotNPS('CNN', y_test_default, y_pred, test_size)
 
 # running a set of scenarios
 data_source = ['data']
-#splits = [0.2, 0.3, 0.4]
-splits = [0.2]
+splits = [0.2, 0.3, 0.4]
+#splits = [0.2]
 for data in data_source:
     for split in splits:
         runScenario(data, split)

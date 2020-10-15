@@ -194,17 +194,22 @@ def getDetectionData(pkt, source_ip, destination_ip, protocol, label, t_start):
             dtn.process(pkt, np.array([data]), label, protocol, t_start)
 
 
-def plotSinglePS(classifier, X_test, y_test):
+def plotSinglePS(classifier, X_test, y_test, test_size):
     disp = plot_precision_recall_curve(classifier, X_test, y_test)
-    disp.ax_.set_title('2-class Precision-Recall curve: AP={0:0.2f}'.format(disp.average_precision))
-    plt.show()
+    #disp.ax_.set_title('Precision-Recall curve: AP={0:0.2f} T={1:0.2f}'.format(disp.average_precision, test_size))
+    #plt.show()
+    plt.savefig('{}_T_{}.eps'.format(disp.estimator_name, test_size))
 
-def plotNPS(model, y_test, y_pred):
+def plotNPS(model, y_test, y_pred, test_size):
     precision, recall, thresholds = precision_recall_curve(y_test, y_pred)
     #print(precision, recall, thresholds)
     plt.figure()
     plt.step(precision, recall)
     plt.xlabel('Recall')
     plt.ylabel('Precision')
-    plt.title('Precision-Recall curve: Model={0} AP={1:0.2f}'.format(model, np.average(precision)))
-    plt.show()
+    plt.ylim([0.0, 1.05])
+    plt.xlim([0.0, 1.0])
+    plt.legend(['Model={0} AP={1:0.2f} T={2:0.2f}'.format(model, np.average(precision), test_size))
+    #plt.title('Precision-Recall curve: Model={0} AP={1:0.2f}'.format(model, np.average(precision)))
+    #plt.show()
+    plt.savefig('{}_T_{}.eps'.format(model, test_size))
