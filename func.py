@@ -216,6 +216,7 @@ def plotNPS(model, y_test, y_pred, test_size):
     #plt.title('Precision-Recall curve: Model={0} AP={1:0.2f}'.format(model, np.average(precision)))
     #plt.show()
     plt.savefig(results_path + '{}_T_{}.eps'.format(model, test_size))
+    plt.savefig(results_path + '{}_T_{}.png'.format(model, test_size), dpi=1200)
     return precision, recall, legend
 
 
@@ -226,4 +227,7 @@ def plotSummary(precisionList, recallList, legends, test_size):
         plt.step(recallList[counter], precisionList[counter], label=legends[counter])
         counter += 1
     plt.legend(legends)
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(test_size))
+    plt.savefig(results_path + 'pr_summary_{}.png'.format(test_size), dpi=1200)
