@@ -25,6 +25,7 @@ ip_prefix = '10.0.0.'
 switch_prefix = '00:00:00:00:00:00:00:0'
 protocol_list = ['icmp', 'tcp', 'udp']
 header=['Source IP', 'Destination IP', 'Protocol', 'Switch', 'P1', 'P2', 'P3', 'P4', 'P1 Rx Packet', 'P1 Tx Packet', 'P1 Rx Bytes', 'P1 Tx Bytes', 'P2 Rx Packet', 'P2 Tx Packet', 'P2 Rx Bytes', 'P2 Tx Bytes', 'P3 Rx Packet', 'P3 Tx Packet', 'P3 Rx Bytes', 'P3 Tx Bytes', 'P4 Rx Packet', 'P4 Tx Packet', 'P4 Rx Bytes', 'P4 Tx Bytes', 'Label']
+colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan', 'peru', 'teal']
 
 def generatePoints(length):
     return np.linspace(1, length, length)
@@ -261,11 +262,12 @@ def plotAllData(allData, index, modelLegend):
     for d in allData:
         # 0.2
         node = d[index]
-        plt.plot(node[0], node[1], '*', label=modelLegend[counter])
+        plt.plot(node[0], node[1], '*', color=colors[counter], label=modelLegend[counter])
+        #print(node[0], node[1])
         plt.xlabel('Recall (%)')
         plt.ylabel('Precision (%)')
         plt.legend()
         counter += 1
-    #plt.show()
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'pr_summary_{}.png'.format(index), dpi=1200)
+    plt.show()
