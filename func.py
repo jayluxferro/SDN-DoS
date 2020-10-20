@@ -6,6 +6,7 @@ Functions
 import subprocess
 import db
 import requests
+import operator
 from pandas import DataFrame as DF
 import cm_pretty as cm_p
 import numpy as np
@@ -256,13 +257,18 @@ def plotSummary(precisionList, recallList, legends, test_size):
     plt.savefig(results_path + 'pr_summary_{}_log.png'.format(test_size), dpi=1200)
 
 
+def sortData(x, y):
+    L = sorted(zip(x,y), key=operator.itemgetter(0)) 
+    new_x, new_y = zip(*L)
+    return list(new_x), list(new_y)
+
 def plotAllData(allData, index, modelLegend):
     plt.figure()
     counter = 0
     for d in allData:
-        # 0.2
         node = d[index]
-        plt.plot(node[0], node[1], '*', color=colors[counter], label=modelLegend[counter])
+        holder = sortData(node[0], node[1])
+        plt.plot(holder[0], holder[1], '-*', color=colors[counter], label=modelLegend[counter])
         #print(node[0], node[1])
         plt.xlabel('Recall (%)')
         plt.ylabel('Precision (%)')
