@@ -266,5 +266,6 @@ def plotAllData(allData, index, modelLegend):
         plt.ylabel('Precision (%)')
         plt.legend()
         counter += 1
-    plt.show()
-
+    #plt.show()
+    plt.savefig(results_path + 'pr_summary_{}.eps'.format(index))
+    plt.savefig(results_path + 'pr_summary_{}.png'.format(index), dpi=1200)
