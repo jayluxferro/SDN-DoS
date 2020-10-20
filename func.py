@@ -262,6 +262,42 @@ def sortData(x, y):
     new_x, new_y = zip(*L)
     return list(new_x), list(new_y)
 
+def plotAllDataRecall(allData, index, models,  modelLegend):
+    plt.figure()
+    counter = 0
+    for d in allData:
+        node = d[index]
+        holder = sortData(node[0], node[1])
+        xticks = np.linspace(1, len(holder[0]), len(holder[0]))
+        plt.plot(xticks, holder[0], '-*', color=colors[counter], label=modelLegend[counter])
+        #print(node[0], node[1])
+        plt.xlabel('Scenario')
+        plt.ylabel('Recall (%)')
+        plt.xticks(xticks)
+        plt.legend()
+        counter += 1
+    plt.savefig(results_path + 'r_model_summary_{}.eps'.format(index))
+    plt.savefig(results_path + 'r_model_summary_{}.png'.format(index), dpi=1200)
+    plt.show()
+
+def plotAllDataPrecision(allData, index, models,  modelLegend):
+    plt.figure()
+    counter = 0
+    for d in allData:
+        node = d[index]
+        holder = sortData(node[0], node[1])
+        xticks = np.linspace(1, len(holder[0]), len(holder[0]))
+        plt.plot(xticks, holder[1], '-*', color=colors[counter], label=modelLegend[counter])
+        #print(node[0], node[1])
+        plt.xlabel('Scenario')
+        plt.ylabel('Precision (%)')
+        plt.xticks(xticks)
+        plt.legend()
+        counter += 1
+    plt.savefig(results_path + 'p_model_summary_{}.eps'.format(index))
+    plt.savefig(results_path + 'p_model_summary_{}.png'.format(index), dpi=1200)
+    plt.show()
+
 def plotAllData(allData, index, modelLegend):
     plt.figure()
     counter = 0
