@@ -15,7 +15,7 @@ import pickle
 from sklearn.metrics import plot_precision_recall_curve, precision_recall_curve
 import matplotlib.pyplot as plt
 import numpy as np
-
+from math import log10 as log
 host_ip = '127.0.0.1'
 host_port = 5000
 results_path='results/'
@@ -217,6 +217,16 @@ def plotNPS(model, y_test, y_pred, test_size):
     #plt.show()
     plt.savefig(results_path + '{}_T_{}.eps'.format(model, test_size))
     plt.savefig(results_path + '{}_T_{}.png'.format(model, test_size), dpi=1200)
+
+    # plot the log graph
+    plt.figure()
+    plt.xlabel('Recall')
+    plt.ylabel('Precision (log10)')
+    plt.legend([legend])
+    plt.step(recall, [log(i) for i in precision])
+    plt.savefig(results_path + '{}_T_{}_log.eps'.format(model, test_size))
+    plt.savefig(results_path + '{}_T_{}_log.png'.format(model, test_size), dpi=1200)
+    print(precision, recall)
     return precision, recall, legend
 
 
@@ -228,6 +238,33 @@ def plotSummary(precisionList, recallList, legends, test_size):
         counter += 1
     plt.legend(legends)
     plt.xlabel('Recall')
-    plt.ylabel('Precision')
+    plt.ylabel('Precision (log10)')
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(test_size))
     plt.savefig(results_path + 'pr_summary_{}.png'.format(test_size), dpi=1200)
+    
+    # log graph
+    plt.figure()
+    counter = 0
+    for p in precisionList:
+        plt.step(recallList[counter], [log(i) for i in precisionList[counter]], label=legends[counter])
+        counter += 1
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.legend(legends)
+    plt.savefig(results_path + 'pr_summary_{}_log.eps'.format(test_size))
+    plt.savefig(results_path + 'pr_summary_{}_log.png'.format(test_size), dpi=1200)
+
+
+def plotAllData(allData, index, modelLegend):
+    plt.figure()
+    counter = 0
+    for d in allData:
+        # 0.2
+        node = d[index]
+        plt.plot(node[0], node[1], '*', label=modelLegend[counter])
+        plt.xlabel('Recall (%)')
+        plt.ylabel('Precision (%)')
+        plt.legend()
+        counter += 1
+    plt.show()
+

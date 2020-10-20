@@ -10,7 +10,8 @@ numpy
 scipy
 python-dateutil
 pandas
-scikit-learn
 pydot
 pydotplus
 graphviz
+scikit-learn
+matplotlib

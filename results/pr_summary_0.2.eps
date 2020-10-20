@@ -1,7 +1,7 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%Title: results/pr_summary_0.2.eps
-%%Creator: matplotlib version 3.1.3, http://matplotlib.org/
-%%CreationDate: Thu Oct 15 23:52:51 2020
+%%Creator: matplotlib version 3.3.2, http://matplotlib.org/
+%%CreationDate: Tue Oct 20 07:18:52 2020
 %%Orientation: portrait
 %%BoundingBox: 75.6 223.20000000000002 536.4 568.8
 %%EndComments
@@ -14,17 +14,17 @@ mpldict begin
 /c { curveto } bind def
 /cl { closepath } bind def
 /box {
-m
-1 index 0 r
-0 exch r
-neg 0 r
-cl
-} bind def
+      m
+      1 index 0 r
+      0 exch r
+      neg 0 r
+      cl
+    } bind def
 /clipbox {
-box
-clip
-newpath
-} bind def
+      box
+      clip
+      newpath
+    } bind def
 %!PS-Adobe-3.0 Resource-Font
 %%Title: DejaVu Sans
 %%Copyright: Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Copyright (c) 2006 by Tavmjong Bah. All Rights Reserved. DejaVu changes are in public domain 
@@ -42,7 +42,7 @@ newpath
 /FontMatrix[.001 0 0 .001 0 0]def
 /FontBBox[-1021 -463 1793 1232]def
 /FontType 3 def
-/Encoding [ /space /period /zero /one /two /three /four /six /seven /eight /nine /equal /A /B /C /D /F /G /K /L /M /N /P /R /S /T /V /a /c /d /e /i /l /n /o /r /s ] def
+/Encoding [ /space /parenleft /parenright /period /zero /one /two /three /four /six /seven /eight /nine /equal /A /B /C /D /F /G /K /L /M /N /P /R /S /T /V /a /c /d /e /g /i /l /n /o /r /s ] def
 /FontInfo 10 dict dup begin
 /FamilyName (DejaVu Sans) def
 /FullName (DejaVu Sans) def
@@ -54,10 +54,36 @@ newpath
 /UnderlinePosition -130 def
 /UnderlineThickness 90 def
 end readonly def
-/CharStrings 38 dict dup begin
+/CharStrings 41 dict dup begin
 /.notdef 0 def
 /space{318 0 0 0 0 0 _sc
 }_d
+/parenleft{390 0 86 -131 310 759 _sc
+310 759 _m
+266 683 234 609 213 536 _c
+191 463 181 389 181 314 _c
+181 238 191 164 213 91 _c
+234 17 266 -56 310 -131 _c
+232 -131 _l
+183 -54 146 20 122 94 _c
+98 168 86 241 86 314 _c
+86 386 98 459 122 533 _c
+146 607 182 682 232 759 _c
+310 759 _l
+_cl}_d
+/parenright{390 0 80 -131 304 759 _sc
+80 759 _m
+158 759 _l
+206 682 243 607 267 533 _c
+291 459 304 386 304 314 _c
+304 241 291 168 267 94 _c
+243 20 206 -54 158 -131 _c
+80 -131 _l
+123 -56 155 17 177 91 _c
+198 164 209 238 209 314 _c
+209 389 198 463 177 536 _c
+155 609 123 683 80 759 _c
+_cl}_d
 /period{318 0 107 0 210 124 _sc
 107 124 _m
 210 124 _l
@@ -665,6 +691,39 @@ _cl}_e}_d
 174 413 156 373 152 322 _c
 472 322 _l
 _cl}_e}_d
+/g{{635 0 55 -207 544 560 _sc
+454 280 _m
+454 344 440 395 414 431 _c
+387 467 349 485 301 485 _c
+253 485 215 467 188 431 _c
+161 395 148 344 148 280 _c
+148 215 161 165 188 129 _c
+215 93 253 75 301 75 _c
+349 75 387 93 414 129 _c
+440 165 454 215 454 280 _c
+544 68 _m
+544 -24 523 -93 482 -139 _c
+440 -184 377 -207 292 -207 _c
+260 -207 231 -204 203 -200 _c
+175 -195 147 -188 121 -178 _c
+}_e{121 -91 _l
+147 -105 173 -115 199 -122 _c
+225 -129 251 -133 278 -133 _c
+336 -133 380 -117 410 -87 _c
+439 -56 454 -10 454 52 _c
+454 96 _l
+435 64 411 40 382 24 _c
+353 8 319 0 279 0 _c
+211 0 157 25 116 76 _c
+75 127 55 195 55 280 _c
+55 364 75 432 116 483 _c
+157 534 211 560 279 560 _c
+319 560 353 552 382 536 _c
+411 520 435 496 454 464 _c
+454 547 _l
+544 547 _l
+}_e{544 68 _l
+_cl}_e}_d
 /i{278 0 94 0 184 760 _sc
 94 547 _m
 184 547 _l
@@ -840,9 +899,9 @@ setfont
 gsave
 65.879602 23.422250 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /zero glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /zero glyphshow
 grestore
 gsave
 /o {
@@ -867,9 +926,9 @@ grestore
 gsave
 130.810511 23.422250 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /two glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /two glyphshow
 grestore
 gsave
 /o {
@@ -894,9 +953,9 @@ grestore
 gsave
 195.741420 23.422250 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /four glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /four glyphshow
 grestore
 gsave
 /o {
@@ -921,9 +980,9 @@ grestore
 gsave
 260.672330 23.422250 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /six glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /six glyphshow
 grestore
 gsave
 /o {
@@ -948,9 +1007,9 @@ grestore
 gsave
 325.603239 23.422250 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /eight glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /eight glyphshow
 grestore
 gsave
 /o {
@@ -975,19 +1034,19 @@ grestore
 gsave
 390.534148 23.422250 translate
 0.000000 rotate
-0.000000 0.000000 m /one glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /zero glyphshow
+0.000000 0 m /one glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /zero glyphshow
 grestore
 gsave
-221.011562 9.750375 translate
+221.261562 9.750375 translate
 0.000000 rotate
-0.000000 0.000000 m /R glyphshow
-6.948242 0.000000 m /e glyphshow
-13.100586 0.000000 m /c glyphshow
-18.598633 0.000000 m /a glyphshow
-24.726562 0.000000 m /l glyphshow
-27.504883 0.000000 m /l glyphshow
+0.000000 0 m /R glyphshow
+6.448242 0 m /e glyphshow
+12.600586 0 m /c glyphshow
+18.098633 0 m /a glyphshow
+24.226562 0 m /l glyphshow
+27.004883 0 m /l glyphshow
 grestore
 gsave
 /o {
@@ -997,7 +1056,7 @@ translate
 0.8 setlinewidth
 1 setlinejoin
 0 setlinecap
-0 0 m
+-0 0 m
 -3.5 0 l
 
 gsave
@@ -1012,9 +1071,9 @@ grestore
 gsave
 34.693750 55.085814 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /six glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /six glyphshow
 grestore
 gsave
 /o {
@@ -1024,7 +1083,7 @@ translate
 0.8 setlinewidth
 1 setlinejoin
 0 setlinecap
-0 0 m
+-0 0 m
 -3.5 0 l
 
 gsave
@@ -1039,9 +1098,9 @@ grestore
 gsave
 34.693750 113.373142 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /seven glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /seven glyphshow
 grestore
 gsave
 /o {
@@ -1051,7 +1110,7 @@ translate
 0.8 setlinewidth
 1 setlinejoin
 0 setlinecap
-0 0 m
+-0 0 m
 -3.5 0 l
 
 gsave
@@ -1066,9 +1125,9 @@ grestore
 gsave
 34.693750 171.660470 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /eight glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /eight glyphshow
 grestore
 gsave
 /o {
@@ -1078,7 +1137,7 @@ translate
 0.8 setlinewidth
 1 setlinejoin
 0 setlinecap
-0 0 m
+-0 0 m
 -3.5 0 l
 
 gsave
@@ -1093,9 +1152,9 @@ grestore
 gsave
 34.693750 229.947797 translate
 0.000000 rotate
-0.000000 0.000000 m /zero glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /nine glyphshow
+0.000000 0 m /zero glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /nine glyphshow
 grestore
 gsave
 /o {
@@ -1105,7 +1164,7 @@ translate
 0.8 setlinewidth
 1 setlinejoin
 0 setlinecap
-0 0 m
+-0 0 m
 -3.5 0 l
 
 gsave
@@ -1120,22 +1179,30 @@ grestore
 gsave
 34.693750 288.235125 translate
 0.000000 rotate
-0.000000 0.000000 m /one glyphshow
-6.362305 0.000000 m /period glyphshow
-9.541016 0.000000 m /zero glyphshow
+0.000000 0 m /one glyphshow
+6.362305 0 m /period glyphshow
+9.541016 0 m /zero glyphshow
 grestore
 gsave
-28.615625 148.548562 translate
+28.615625 129.251687 translate
 90.000000 rotate
-0.000000 0.000000 m /P glyphshow
-6.030273 0.000000 m /r glyphshow
-10.141602 0.000000 m /e glyphshow
-16.293945 0.000000 m /c glyphshow
-21.791992 0.000000 m /i glyphshow
-24.570312 0.000000 m /s glyphshow
-29.780273 0.000000 m /i glyphshow
-32.558594 0.000000 m /o glyphshow
-38.676758 0.000000 m /n glyphshow
+0.000000 0 m /P glyphshow
+5.905273 0 m /r glyphshow
+9.766602 0 m /e glyphshow
+15.918945 0 m /c glyphshow
+21.416992 0 m /i glyphshow
+24.195312 0 m /s glyphshow
+29.405273 0 m /i glyphshow
+32.183594 0 m /o glyphshow
+38.301758 0 m /n glyphshow
+44.639648 0 m /space glyphshow
+47.818359 0 m /parenleft glyphshow
+51.719727 0 m /l glyphshow
+54.498047 0 m /o glyphshow
+60.616211 0 m /g glyphshow
+66.963867 0 m /one glyphshow
+73.326172 0 m /zero glyphshow
+79.688477 0 m /parenright glyphshow
 grestore
 1.500 setlinewidth
 2 setlinecap
@@ -1163,9 +1230,9 @@ grestore
 gsave
 357.1 266.1 57.6 38.02 clipbox
 398.487273 50.112 m
-398.487273 251.634842 l
-281.78862 251.634842 l
-281.78862 292.032 l
+398.487273 221.077655 l
+371.110101 221.077655 l
+371.110101 292.032 l
 73.832727 292.032 l
 stroke
 grestore
@@ -1239,9 +1306,9 @@ grestore
 gsave
 357.1 266.1 57.6 38.02 clipbox
 398.487273 50.112 m
-398.487273 212.392741 l
-397.104587 212.392741 l
-397.104587 292.032 l
+398.487273 209.312603 l
+398.210736 209.312603 l
+398.210736 292.032 l
 73.832727 292.032 l
 stroke
 grestore
@@ -1255,7 +1322,6 @@ stroke
 grestore
 0.800 setlinewidth
 0 setlinejoin
-[] 0 setdash
 0.000 setgray
 gsave
 57.6 38.016 m
@@ -1300,7 +1366,6 @@ grestore
 1.500 setlinewidth
 1 setlinejoin
 2 setlinecap
-[] 0 setdash
 0.122 0.467 0.706 setrgbcolor
 gsave
 66.6 213.98475 m
@@ -1311,30 +1376,30 @@ grestore
 gsave
 94.600000 210.484750 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /K glyphshow
-44.960938 0.000000 m /N glyphshow
-52.441406 0.000000 m /N glyphshow
-59.921875 0.000000 m /space glyphshow
-63.100586 0.000000 m /A glyphshow
-69.941406 0.000000 m /P glyphshow
-75.971680 0.000000 m /equal glyphshow
-84.350586 0.000000 m /zero glyphshow
-90.712891 0.000000 m /period glyphshow
-93.891602 0.000000 m /eight glyphshow
-100.253906 0.000000 m /six glyphshow
-106.616211 0.000000 m /space glyphshow
-109.794922 0.000000 m /T glyphshow
-115.903320 0.000000 m /equal glyphshow
-124.282227 0.000000 m /zero glyphshow
-130.644531 0.000000 m /period glyphshow
-133.823242 0.000000 m /two glyphshow
-140.185547 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /K glyphshow
+44.960938 0 m /N glyphshow
+52.441406 0 m /N glyphshow
+59.921875 0 m /space glyphshow
+63.100586 0 m /A glyphshow
+69.941406 0 m /P glyphshow
+75.971680 0 m /equal glyphshow
+84.350586 0 m /zero glyphshow
+90.712891 0 m /period glyphshow
+93.891602 0 m /eight glyphshow
+100.253906 0 m /six glyphshow
+106.616211 0 m /space glyphshow
+109.794922 0 m /T glyphshow
+115.903320 0 m /equal glyphshow
+124.282227 0 m /zero glyphshow
+130.644531 0 m /period glyphshow
+133.823242 0 m /two glyphshow
+140.185547 0 m /zero glyphshow
 grestore
 1.000 0.498 0.055 setrgbcolor
 gsave
@@ -1346,29 +1411,29 @@ grestore
 gsave
 94.600000 195.812875 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /L glyphshow
-43.974609 0.000000 m /R glyphshow
-50.922852 0.000000 m /space glyphshow
-54.101562 0.000000 m /A glyphshow
-60.942383 0.000000 m /P glyphshow
-66.972656 0.000000 m /equal glyphshow
-75.351562 0.000000 m /zero glyphshow
-81.713867 0.000000 m /period glyphshow
-84.892578 0.000000 m /seven glyphshow
-91.254883 0.000000 m /six glyphshow
-97.617188 0.000000 m /space glyphshow
-100.795898 0.000000 m /T glyphshow
-106.904297 0.000000 m /equal glyphshow
-115.283203 0.000000 m /zero glyphshow
-121.645508 0.000000 m /period glyphshow
-124.824219 0.000000 m /two glyphshow
-131.186523 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /L glyphshow
+43.974609 0 m /R glyphshow
+50.922852 0 m /space glyphshow
+54.101562 0 m /A glyphshow
+60.942383 0 m /P glyphshow
+66.972656 0 m /equal glyphshow
+75.351562 0 m /zero glyphshow
+81.713867 0 m /period glyphshow
+84.892578 0 m /seven glyphshow
+91.254883 0 m /six glyphshow
+97.617188 0 m /space glyphshow
+100.795898 0 m /T glyphshow
+106.904297 0 m /equal glyphshow
+115.283203 0 m /zero glyphshow
+121.645508 0 m /period glyphshow
+124.824219 0 m /two glyphshow
+131.186523 0 m /zero glyphshow
 grestore
 0.173 0.627 0.173 setrgbcolor
 gsave
@@ -1380,31 +1445,31 @@ grestore
 gsave
 94.600000 181.141000 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /L glyphshow
-43.974609 0.000000 m /S glyphshow
-50.322266 0.000000 m /V glyphshow
-57.163086 0.000000 m /C glyphshow
-64.145508 0.000000 m /space glyphshow
-67.324219 0.000000 m /A glyphshow
-74.165039 0.000000 m /P glyphshow
-80.195312 0.000000 m /equal glyphshow
-88.574219 0.000000 m /zero glyphshow
-94.936523 0.000000 m /period glyphshow
-98.115234 0.000000 m /eight glyphshow
-104.477539 0.000000 m /four glyphshow
-110.839844 0.000000 m /space glyphshow
-114.018555 0.000000 m /T glyphshow
-120.126953 0.000000 m /equal glyphshow
-128.505859 0.000000 m /zero glyphshow
-134.868164 0.000000 m /period glyphshow
-138.046875 0.000000 m /two glyphshow
-144.409180 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /L glyphshow
+43.974609 0 m /S glyphshow
+50.322266 0 m /V glyphshow
+57.163086 0 m /C glyphshow
+64.145508 0 m /space glyphshow
+67.324219 0 m /A glyphshow
+74.165039 0 m /P glyphshow
+80.195312 0 m /equal glyphshow
+88.574219 0 m /zero glyphshow
+94.936523 0 m /period glyphshow
+98.115234 0 m /eight glyphshow
+104.477539 0 m /two glyphshow
+110.839844 0 m /space glyphshow
+114.018555 0 m /T glyphshow
+120.126953 0 m /equal glyphshow
+128.505859 0 m /zero glyphshow
+134.868164 0 m /period glyphshow
+138.046875 0 m /two glyphshow
+144.409180 0 m /zero glyphshow
 grestore
 0.839 0.153 0.157 setrgbcolor
 gsave
@@ -1416,30 +1481,30 @@ grestore
 gsave
 94.600000 166.469125 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /S glyphshow
-44.750977 0.000000 m /V glyphshow
-51.591797 0.000000 m /C glyphshow
-58.574219 0.000000 m /space glyphshow
-61.752930 0.000000 m /A glyphshow
-68.593750 0.000000 m /P glyphshow
-74.624023 0.000000 m /equal glyphshow
-83.002930 0.000000 m /zero glyphshow
-89.365234 0.000000 m /period glyphshow
-92.543945 0.000000 m /nine glyphshow
-98.906250 0.000000 m /three glyphshow
-105.268555 0.000000 m /space glyphshow
-108.447266 0.000000 m /T glyphshow
-114.555664 0.000000 m /equal glyphshow
-122.934570 0.000000 m /zero glyphshow
-129.296875 0.000000 m /period glyphshow
-132.475586 0.000000 m /two glyphshow
-138.837891 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /S glyphshow
+44.750977 0 m /V glyphshow
+51.591797 0 m /C glyphshow
+58.574219 0 m /space glyphshow
+61.752930 0 m /A glyphshow
+68.593750 0 m /P glyphshow
+74.624023 0 m /equal glyphshow
+83.002930 0 m /zero glyphshow
+89.365234 0 m /period glyphshow
+92.543945 0 m /nine glyphshow
+98.906250 0 m /three glyphshow
+105.268555 0 m /space glyphshow
+108.447266 0 m /T glyphshow
+114.555664 0 m /equal glyphshow
+122.934570 0 m /zero glyphshow
+129.296875 0 m /period glyphshow
+132.475586 0 m /two glyphshow
+138.837891 0 m /zero glyphshow
 grestore
 0.580 0.404 0.741 setrgbcolor
 gsave
@@ -1451,29 +1516,29 @@ grestore
 gsave
 94.600000 151.797250 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /D glyphshow
-46.103516 0.000000 m /T glyphshow
-52.211914 0.000000 m /space glyphshow
-55.390625 0.000000 m /A glyphshow
-62.231445 0.000000 m /P glyphshow
-68.261719 0.000000 m /equal glyphshow
-76.640625 0.000000 m /zero glyphshow
-83.002930 0.000000 m /period glyphshow
-86.181641 0.000000 m /eight glyphshow
-92.543945 0.000000 m /six glyphshow
-98.906250 0.000000 m /space glyphshow
-102.084961 0.000000 m /T glyphshow
-108.193359 0.000000 m /equal glyphshow
-116.572266 0.000000 m /zero glyphshow
-122.934570 0.000000 m /period glyphshow
-126.113281 0.000000 m /two glyphshow
-132.475586 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /D glyphshow
+46.103516 0 m /T glyphshow
+52.211914 0 m /space glyphshow
+55.390625 0 m /A glyphshow
+62.231445 0 m /P glyphshow
+68.261719 0 m /equal glyphshow
+76.640625 0 m /zero glyphshow
+83.002930 0 m /period glyphshow
+86.181641 0 m /eight glyphshow
+92.543945 0 m /six glyphshow
+98.906250 0 m /space glyphshow
+102.084961 0 m /T glyphshow
+108.193359 0 m /equal glyphshow
+116.572266 0 m /zero glyphshow
+122.934570 0 m /period glyphshow
+126.113281 0 m /two glyphshow
+132.475586 0 m /zero glyphshow
 grestore
 0.549 0.337 0.294 setrgbcolor
 gsave
@@ -1485,29 +1550,29 @@ grestore
 gsave
 94.600000 137.125375 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /R glyphshow
-45.351562 0.000000 m /F glyphshow
-51.103516 0.000000 m /space glyphshow
-54.282227 0.000000 m /A glyphshow
-61.123047 0.000000 m /P glyphshow
-67.153320 0.000000 m /equal glyphshow
-75.532227 0.000000 m /one glyphshow
-81.894531 0.000000 m /period glyphshow
-85.073242 0.000000 m /zero glyphshow
-91.435547 0.000000 m /zero glyphshow
-97.797852 0.000000 m /space glyphshow
-100.976562 0.000000 m /T glyphshow
-107.084961 0.000000 m /equal glyphshow
-115.463867 0.000000 m /zero glyphshow
-121.826172 0.000000 m /period glyphshow
-125.004883 0.000000 m /two glyphshow
-131.367188 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /R glyphshow
+45.351562 0 m /F glyphshow
+51.103516 0 m /space glyphshow
+54.282227 0 m /A glyphshow
+61.123047 0 m /P glyphshow
+67.153320 0 m /equal glyphshow
+75.532227 0 m /one glyphshow
+81.894531 0 m /period glyphshow
+85.073242 0 m /zero glyphshow
+91.435547 0 m /zero glyphshow
+97.797852 0 m /space glyphshow
+100.976562 0 m /T glyphshow
+107.084961 0 m /equal glyphshow
+115.463867 0 m /zero glyphshow
+121.826172 0 m /period glyphshow
+125.004883 0 m /two glyphshow
+131.367188 0 m /zero glyphshow
 grestore
 0.890 0.467 0.761 setrgbcolor
 gsave
@@ -1519,29 +1584,29 @@ grestore
 gsave
 94.600000 122.453500 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /G glyphshow
-46.152344 0.000000 m /B glyphshow
-53.012695 0.000000 m /space glyphshow
-56.191406 0.000000 m /A glyphshow
-63.032227 0.000000 m /P glyphshow
-69.062500 0.000000 m /equal glyphshow
-77.441406 0.000000 m /zero glyphshow
-83.803711 0.000000 m /period glyphshow
-86.982422 0.000000 m /eight glyphshow
-93.344727 0.000000 m /six glyphshow
-99.707031 0.000000 m /space glyphshow
-102.885742 0.000000 m /T glyphshow
-108.994141 0.000000 m /equal glyphshow
-117.373047 0.000000 m /zero glyphshow
-123.735352 0.000000 m /period glyphshow
-126.914062 0.000000 m /two glyphshow
-133.276367 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /G glyphshow
+46.152344 0 m /B glyphshow
+53.012695 0 m /space glyphshow
+56.191406 0 m /A glyphshow
+63.032227 0 m /P glyphshow
+69.062500 0 m /equal glyphshow
+77.441406 0 m /zero glyphshow
+83.803711 0 m /period glyphshow
+86.982422 0 m /eight glyphshow
+93.344727 0 m /six glyphshow
+99.707031 0 m /space glyphshow
+102.885742 0 m /T glyphshow
+108.994141 0 m /equal glyphshow
+117.373047 0 m /zero glyphshow
+123.735352 0 m /period glyphshow
+126.914062 0 m /two glyphshow
+133.276367 0 m /zero glyphshow
 grestore
 0.498 setgray
 gsave
@@ -1553,30 +1618,30 @@ grestore
 gsave
 94.600000 107.781625 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /G glyphshow
-46.152344 0.000000 m /N glyphshow
-53.632812 0.000000 m /B glyphshow
-60.493164 0.000000 m /space glyphshow
-63.671875 0.000000 m /A glyphshow
-70.512695 0.000000 m /P glyphshow
-76.542969 0.000000 m /equal glyphshow
-84.921875 0.000000 m /zero glyphshow
-91.284180 0.000000 m /period glyphshow
-94.462891 0.000000 m /eight glyphshow
-100.825195 0.000000 m /three glyphshow
-107.187500 0.000000 m /space glyphshow
-110.366211 0.000000 m /T glyphshow
-116.474609 0.000000 m /equal glyphshow
-124.853516 0.000000 m /zero glyphshow
-131.215820 0.000000 m /period glyphshow
-134.394531 0.000000 m /two glyphshow
-140.756836 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /G glyphshow
+46.152344 0 m /N glyphshow
+53.632812 0 m /B glyphshow
+60.493164 0 m /space glyphshow
+63.671875 0 m /A glyphshow
+70.512695 0 m /P glyphshow
+76.542969 0 m /equal glyphshow
+84.921875 0 m /zero glyphshow
+91.284180 0 m /period glyphshow
+94.462891 0 m /eight glyphshow
+100.825195 0 m /three glyphshow
+107.187500 0 m /space glyphshow
+110.366211 0 m /T glyphshow
+116.474609 0 m /equal glyphshow
+124.853516 0 m /zero glyphshow
+131.215820 0 m /period glyphshow
+134.394531 0 m /two glyphshow
+140.756836 0 m /zero glyphshow
 grestore
 0.737 0.741 0.133 setrgbcolor
 gsave
@@ -1588,30 +1653,30 @@ grestore
 gsave
 94.600000 93.109750 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /B glyphshow
-45.263672 0.000000 m /N glyphshow
-52.744141 0.000000 m /B glyphshow
-59.604492 0.000000 m /space glyphshow
-62.783203 0.000000 m /A glyphshow
-69.624023 0.000000 m /P glyphshow
-75.654297 0.000000 m /equal glyphshow
-84.033203 0.000000 m /zero glyphshow
-90.395508 0.000000 m /period glyphshow
-93.574219 0.000000 m /seven glyphshow
-99.936523 0.000000 m /nine glyphshow
-106.298828 0.000000 m /space glyphshow
-109.477539 0.000000 m /T glyphshow
-115.585938 0.000000 m /equal glyphshow
-123.964844 0.000000 m /zero glyphshow
-130.327148 0.000000 m /period glyphshow
-133.505859 0.000000 m /two glyphshow
-139.868164 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /B glyphshow
+45.263672 0 m /N glyphshow
+52.744141 0 m /B glyphshow
+59.604492 0 m /space glyphshow
+62.783203 0 m /A glyphshow
+69.624023 0 m /P glyphshow
+75.654297 0 m /equal glyphshow
+84.033203 0 m /zero glyphshow
+90.395508 0 m /period glyphshow
+93.574219 0 m /seven glyphshow
+99.936523 0 m /nine glyphshow
+106.298828 0 m /space glyphshow
+109.477539 0 m /T glyphshow
+115.585938 0 m /equal glyphshow
+123.964844 0 m /zero glyphshow
+130.327148 0 m /period glyphshow
+133.505859 0 m /two glyphshow
+139.868164 0 m /zero glyphshow
 grestore
 0.090 0.745 0.812 setrgbcolor
 gsave
@@ -1623,30 +1688,30 @@ grestore
 gsave
 94.600000 78.437875 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /M glyphshow
-47.031250 0.000000 m /N glyphshow
-54.511719 0.000000 m /B glyphshow
-61.372070 0.000000 m /space glyphshow
-64.550781 0.000000 m /A glyphshow
-71.391602 0.000000 m /P glyphshow
-77.421875 0.000000 m /equal glyphshow
-85.800781 0.000000 m /zero glyphshow
-92.163086 0.000000 m /period glyphshow
-95.341797 0.000000 m /eight glyphshow
-101.704102 0.000000 m /three glyphshow
-108.066406 0.000000 m /space glyphshow
-111.245117 0.000000 m /T glyphshow
-117.353516 0.000000 m /equal glyphshow
-125.732422 0.000000 m /zero glyphshow
-132.094727 0.000000 m /period glyphshow
-135.273438 0.000000 m /two glyphshow
-141.635742 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /M glyphshow
+47.031250 0 m /N glyphshow
+54.511719 0 m /B glyphshow
+61.372070 0 m /space glyphshow
+64.550781 0 m /A glyphshow
+71.391602 0 m /P glyphshow
+77.421875 0 m /equal glyphshow
+85.800781 0 m /zero glyphshow
+92.163086 0 m /period glyphshow
+95.341797 0 m /eight glyphshow
+101.704102 0 m /three glyphshow
+108.066406 0 m /space glyphshow
+111.245117 0 m /T glyphshow
+117.353516 0 m /equal glyphshow
+125.732422 0 m /zero glyphshow
+132.094727 0 m /period glyphshow
+135.273438 0 m /two glyphshow
+141.635742 0 m /zero glyphshow
 grestore
 0.122 0.467 0.706 setrgbcolor
 gsave
@@ -1658,31 +1723,31 @@ grestore
 gsave
 94.600000 63.766000 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /L glyphshow
-43.974609 0.000000 m /S glyphshow
-50.322266 0.000000 m /T glyphshow
-56.430664 0.000000 m /M glyphshow
-65.058594 0.000000 m /space glyphshow
-68.237305 0.000000 m /A glyphshow
-75.078125 0.000000 m /P glyphshow
-81.108398 0.000000 m /equal glyphshow
-89.487305 0.000000 m /zero glyphshow
-95.849609 0.000000 m /period glyphshow
-99.028320 0.000000 m /eight glyphshow
-105.390625 0.000000 m /two glyphshow
-111.752930 0.000000 m /space glyphshow
-114.931641 0.000000 m /T glyphshow
-121.040039 0.000000 m /equal glyphshow
-129.418945 0.000000 m /zero glyphshow
-135.781250 0.000000 m /period glyphshow
-138.959961 0.000000 m /two glyphshow
-145.322266 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /L glyphshow
+43.974609 0 m /S glyphshow
+50.322266 0 m /T glyphshow
+56.430664 0 m /M glyphshow
+65.058594 0 m /space glyphshow
+68.237305 0 m /A glyphshow
+75.078125 0 m /P glyphshow
+81.108398 0 m /equal glyphshow
+89.487305 0 m /zero glyphshow
+95.849609 0 m /period glyphshow
+99.028320 0 m /eight glyphshow
+105.390625 0 m /one glyphshow
+111.752930 0 m /space glyphshow
+114.931641 0 m /T glyphshow
+121.040039 0 m /equal glyphshow
+129.418945 0 m /zero glyphshow
+135.781250 0 m /period glyphshow
+138.959961 0 m /two glyphshow
+145.322266 0 m /zero glyphshow
 grestore
 1.000 0.498 0.055 setrgbcolor
 gsave
@@ -1694,30 +1759,30 @@ grestore
 gsave
 94.600000 49.094125 translate
 0.000000 rotate
-0.000000 0.000000 m /M glyphshow
-8.627930 0.000000 m /o glyphshow
-14.746094 0.000000 m /d glyphshow
-21.093750 0.000000 m /e glyphshow
-27.246094 0.000000 m /l glyphshow
-30.024414 0.000000 m /equal glyphshow
-38.403320 0.000000 m /C glyphshow
-45.385742 0.000000 m /N glyphshow
-52.866211 0.000000 m /N glyphshow
-60.346680 0.000000 m /space glyphshow
-63.525391 0.000000 m /A glyphshow
-70.366211 0.000000 m /P glyphshow
-76.396484 0.000000 m /equal glyphshow
-84.775391 0.000000 m /zero glyphshow
-91.137695 0.000000 m /period glyphshow
-94.316406 0.000000 m /seven glyphshow
-100.678711 0.000000 m /nine glyphshow
-107.041016 0.000000 m /space glyphshow
-110.219727 0.000000 m /T glyphshow
-116.328125 0.000000 m /equal glyphshow
-124.707031 0.000000 m /zero glyphshow
-131.069336 0.000000 m /period glyphshow
-134.248047 0.000000 m /two glyphshow
-140.610352 0.000000 m /zero glyphshow
+0.000000 0 m /M glyphshow
+8.627930 0 m /o glyphshow
+14.746094 0 m /d glyphshow
+21.093750 0 m /e glyphshow
+27.246094 0 m /l glyphshow
+30.024414 0 m /equal glyphshow
+38.403320 0 m /C glyphshow
+45.385742 0 m /N glyphshow
+52.866211 0 m /N glyphshow
+60.346680 0 m /space glyphshow
+63.525391 0 m /A glyphshow
+70.366211 0 m /P glyphshow
+76.396484 0 m /equal glyphshow
+84.775391 0 m /zero glyphshow
+91.137695 0 m /period glyphshow
+94.316406 0 m /seven glyphshow
+100.678711 0 m /nine glyphshow
+107.041016 0 m /space glyphshow
+110.219727 0 m /T glyphshow
+116.328125 0 m /equal glyphshow
+124.707031 0 m /zero glyphshow
+131.069336 0 m /period glyphshow
+134.248047 0 m /two glyphshow
+140.610352 0 m /zero glyphshow
 grestore
 
 end

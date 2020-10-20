@@ -251,8 +251,8 @@ def runScenario(data_file, test_size):
 
 # running a set of scenarios
 data_source = ['data']
-splits = [0.2, 0.3, 0.4]
-#splits = [0.2]
+#splits = [0.2, 0.3, 0.4]
+splits = [0.2]
 for data in data_source:
     for split in splits:
         runScenario(data, split)
