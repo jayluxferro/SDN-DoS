@@ -59,3 +59,9 @@ def addAllData(data, tsize, y_test, y_pred, model):
     cursor.execute("insert into all_data(data, tsize, precision, recall, accuracy, f1, model) values(?, ?, ?, ?, ?, ?, ?)", (data, tsize, precision, recall, accuracy, f1, model))
     db.commit()
     log.success('[+] {} <=> {} <=> {}'.format(data, tsize, model))
+
+def getAvgPRAllData(tsize, model):
+    db = init()
+    cursor = db.cursor()
+    cursor.execute("select avg(precision), avg(recall) from all_data where tsize=? and model=?", (tsize, model))
+    return cursor.fetchone()

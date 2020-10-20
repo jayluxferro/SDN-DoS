@@ -278,7 +278,7 @@ def plotAllDataRecall(allData, index, models,  modelLegend):
         counter += 1
     plt.savefig(results_path + 'r_model_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'r_model_summary_{}.png'.format(index), dpi=1200)
-    plt.show()
+    #plt.show()
 
 def plotAllDataPrecision(allData, index, models,  modelLegend):
     plt.figure()
@@ -296,7 +296,7 @@ def plotAllDataPrecision(allData, index, models,  modelLegend):
         counter += 1
     plt.savefig(results_path + 'p_model_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'p_model_summary_{}.png'.format(index), dpi=1200)
-    plt.show()
+    #plt.show()
 
 def plotAllData(allData, index, modelLegend):
     plt.figure()
@@ -312,4 +312,4 @@ def plotAllData(allData, index, modelLegend):
         counter += 1
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'pr_summary_{}.png'.format(index), dpi=1200)
-    plt.show()
+    #plt.show()

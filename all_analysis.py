@@ -19,13 +19,11 @@ for d in db.fetchTable('all_data'):
     node = allData[modelIndex][splitIndex]
     node[0].append(recall)
     node[1].append(precision)
+
 """
-# precision -> recall
 for x in splitRatios:
     fx.plotAllData(allData, splitRatios.index(x), modelLegend)
     fx.plotAllDataPrecision(allData, splitRatios.index(x), models, modelLegend)
-"""
-# precision -> models
-for x in splitRatios:
     fx.plotAllDataRecall(allData, splitRatios.index(x), models, modelLegend)
+"""
 
