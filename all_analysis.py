@@ -20,10 +20,9 @@ for d in db.fetchTable('all_data'):
     node[0].append(recall)
     node[1].append(precision)
 
-"""
+
 for x in splitRatios:
     fx.plotAllData(allData, splitRatios.index(x), modelLegend)
-    fx.plotAllDataPrecision(allData, splitRatios.index(x), models, modelLegend)
-    fx.plotAllDataRecall(allData, splitRatios.index(x), models, modelLegend)
-"""
+    #fx.plotAllDataPrecision(allData, splitRatios.index(x), models, modelLegend)
+    #fx.plotAllDataRecall(allData, splitRatios.index(x), models, modelLegend)
 

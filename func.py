@@ -305,6 +305,7 @@ def plotAllData(allData, index, modelLegend):
         node = d[index]
         holder = sortData(node[0], node[1])
         plt.plot(holder[0], holder[1], '-*', color=colors[counter], label=modelLegend[counter])
+        plt.axvline(x=0.86, linewidth=4, color='r')
         #print(node[0], node[1])
         plt.xlabel('Recall (%)')
         plt.ylabel('Precision (%)')
@@ -312,4 +313,4 @@ def plotAllData(allData, index, modelLegend):
         counter += 1
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'pr_summary_{}.png'.format(index), dpi=1200)
-    #plt.show()
+    plt.show()
