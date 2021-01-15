@@ -27,6 +27,8 @@ switch_prefix = '00:00:00:00:00:00:00:0'
 protocol_list = ['icmp', 'tcp', 'udp']
 header=['Source IP', 'Destination IP', 'Protocol', 'Switch', 'P1', 'P2', 'P3', 'P4', 'P1 Rx Packet', 'P1 Tx Packet', 'P1 Rx Bytes', 'P1 Tx Bytes', 'P2 Rx Packet', 'P2 Tx Packet', 'P2 Rx Bytes', 'P2 Tx Bytes', 'P3 Rx Packet', 'P3 Tx Packet', 'P3 Rx Bytes', 'P3 Tx Bytes', 'P4 Rx Packet', 'P4 Tx Packet', 'P4 Rx Bytes', 'P4 Tx Bytes', 'Label']
 colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan', 'peru', 'teal']
+figsize = (8, 4)
+ratio_legend = ['80/20', '70/30', '60/40']
 
 def generatePoints(length):
     return np.linspace(1, length, length)
@@ -263,7 +265,7 @@ def sortData(x, y):
     return list(new_x), list(new_y)
 
 def plotAllDataRecall(allData, index, models,  modelLegend):
-    plt.figure()
+    plt.figure(figsize=figsize)
     counter = 0
     for d in allData:
         node = d[index]
@@ -276,12 +278,14 @@ def plotAllDataRecall(allData, index, models,  modelLegend):
         plt.xticks(xticks)
         plt.legend(bbox_to_anchor=(1,1), loc="upper left")
         counter += 1
+    plt.title('The Recall rate of the models (' + ratio_legend[index] + ' Train-Test Split Ratio) for 10 Scenarios')
+    plt.tight_layout()
     plt.savefig(results_path + 'r_model_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'r_model_summary_{}.png'.format(index), dpi=1200)
     #plt.show()
 
 def plotAllDataPrecision(allData, index, models,  modelLegend):
-    plt.figure()
+    plt.figure(figsize=figsize)
     counter = 0
     for d in allData:
         node = d[index]
@@ -294,12 +298,14 @@ def plotAllDataPrecision(allData, index, models,  modelLegend):
         plt.xticks(xticks)
         plt.legend(bbox_to_anchor=(1,1), loc="upper left")
         counter += 1
+    plt.title('The Precision of the models (' + ratio_legend[index] + ' Train-Test Split Ratio) for 10 Scenarios')
+    plt.tight_layout()
     plt.savefig(results_path + 'p_model_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'p_model_summary_{}.png'.format(index), dpi=1200)
     #plt.show()
 
 def plotAllData(allData, index, modelLegend):
-    plt.figure()
+    plt.figure(figsize=figsize)
     counter = 0
     for d in allData:
         node = d[index]
@@ -311,6 +317,8 @@ def plotAllData(allData, index, modelLegend):
         plt.ylabel('Precision (%)')
         plt.legend(bbox_to_anchor=(1,1), loc="upper left")
         counter += 1
+    plt.title('Precision against Recall for ' + ratio_legend[index] + ' Train-Test Split Ratio')
+    plt.tight_layout()
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'pr_summary_{}.png'.format(index), dpi=1200)
     plt.show()

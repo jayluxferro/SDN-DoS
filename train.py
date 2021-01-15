@@ -187,7 +187,7 @@ def runScenario(data_file, test_size):
     y_pred = np.array([[int(i)] for i in y_pred])
 #print(y_test, y_pred)
 #fx.plot_cm(confusion_matrix(y_test_default, y_pred), title='CNN Confusion Matrix')
-    model.save('lstm_model.h5')
+    model.save('cnn.h5')
     lg.success('[+] Model saved')
     db.addAllData(data_file, test_size, y_test_default, y_pred, 'cnn')
 
@@ -200,3 +200,4 @@ for _ in range(iterations):
     for data in data_source:
         for split in splits:
             runScenario(data, split)
+            sys.exit()

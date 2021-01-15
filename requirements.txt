@@ -3,7 +3,7 @@ scapy
 python-socketio[client]
 eventlet
 psutil
-tensorflow
+#tensorflow
 keras
 gensim
 numpy
