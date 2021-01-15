@@ -13,7 +13,7 @@ import numpy as np
 import detection as dtn
 import logger as lg
 import pickle
-from sklearn.metrics import plot_precision_recall_curve, precision_recall_curve
+from sklearn.metrics import  precision_recall_curve
 import matplotlib.pyplot as plt
 import numpy as np
 from math import log10 as log
@@ -196,13 +196,13 @@ def getDetectionData(pkt, source_ip, destination_ip, protocol, label, t_start):
             # forward data to detection engine
             dtn.process(pkt, np.array([data]), label, protocol, t_start)
 
-
+"""
 def plotSinglePS(classifier, X_test, y_test, test_size):
     disp = plot_precision_recall_curve(classifier, X_test, y_test)
     #disp.ax_.set_title('Precision-Recall curve: AP={0:0.2f} T={1:0.2f}'.format(disp.average_precision, test_size))
     #plt.show()
     plt.savefig(results_path + '{}_T_{}.eps'.format(disp.estimator_name, test_size))
-
+"""
 def plotNPS(model, y_test, y_pred, test_size):
     precision, recall, thresholds = precision_recall_curve(y_test, y_pred)
     #print(precision, recall, thresholds)
@@ -274,7 +274,7 @@ def plotAllDataRecall(allData, index, models,  modelLegend):
         plt.xlabel('Scenario')
         plt.ylabel('Recall (%)')
         plt.xticks(xticks)
-        plt.legend()
+        plt.legend(bbox_to_anchor=(1,1), loc="upper left")
         counter += 1
     plt.savefig(results_path + 'r_model_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'r_model_summary_{}.png'.format(index), dpi=1200)
@@ -292,7 +292,7 @@ def plotAllDataPrecision(allData, index, models,  modelLegend):
         plt.xlabel('Scenario')
         plt.ylabel('Precision (%)')
         plt.xticks(xticks)
-        plt.legend()
+        plt.legend(bbox_to_anchor=(1,1), loc="upper left")
         counter += 1
     plt.savefig(results_path + 'p_model_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'p_model_summary_{}.png'.format(index), dpi=1200)
@@ -309,7 +309,7 @@ def plotAllData(allData, index, modelLegend):
         #print(node[0], node[1])
         plt.xlabel('Recall (%)')
         plt.ylabel('Precision (%)')
-        plt.legend()
+        plt.legend(bbox_to_anchor=(1,1), loc="upper left")
         counter += 1
     plt.savefig(results_path + 'pr_summary_{}.eps'.format(index))
     plt.savefig(results_path + 'pr_summary_{}.png'.format(index), dpi=1200)
