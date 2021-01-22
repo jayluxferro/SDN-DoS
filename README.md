@@ -1,4 +1,5 @@
 ### An Investigation into the Application of Deep Learning in the Detection and Mitigation of DDOS Attack on SDN Controllers
+James Dzisi Gadze, Akua Acheampomaa Bamfo-Asante, Justice Owusu Agyemang *, Henry Nunoo-Mensah and Kwasi Adu-Boahen Opare
 
 #### Dataset
 https://github.com/jayluxferro/SDN-DoS/tree/master/data/data.csv
