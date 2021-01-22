@@ -19,5 +19,5 @@ python train.py
 #### Analysis
 Run 
 ```bash
-python analysis.py
+python all_analysis.py
 ```
